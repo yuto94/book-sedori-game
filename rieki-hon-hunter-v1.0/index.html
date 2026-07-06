@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利益本ハンター</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <section id="topScreen" class="screen screen-active top-screen">
+      <div class="brand-card">
+        <img class="title-logo" src="assets/images/title_logo.png" alt="本せどり仕入れゲーム 利益本ハンター 60秒で目標利益1万円を目指せ！">
+        <div class="button-row">
+          <button class="primary-button" id="startButton">はじめる</button>
+          <button class="secondary-button" id="tutorialButton">チュートリアル</button>
+        </div>
+        <p class="note">※このゲームは本せどりを楽しみながら体験できるシミュレーションです。</p>
+      </div>
+    </section>
+
+    <section id="tutorialScreen" class="screen tutorial-screen">
+      <div class="paper-panel">
+        <p class="page-count"><span id="tutorialPageNow">1</span> / 4</p>
+        <h2 id="tutorialTitle">古本屋へようこそ！</h2>
+        <p id="tutorialText">今日は60秒で利益本を探します。</p>
+        <div class="tutorial-dots" id="tutorialDots"></div>
+        <div class="button-row">
+          <button class="secondary-button" id="tutorialBackButton">戻る</button>
+          <button class="primary-button" id="tutorialNextButton">次へ</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="storyScreen" class="screen story-screen">
+      <div class="store-scene" aria-hidden="true"></div>
+      <div class="rpg-dialog" id="storyDialog">
+        <p id="storyText">今日は本せどりをしに古本屋へやってきた。</p>
+        <span id="storyHint" class="story-hint">▼</span>
+      </div>
+    </section>
+
+    <section id="countdownScreen" class="screen countdown-screen">
+      <div class="countdown-number" id="countdownNumber">3</div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen">
+      <header class="game-hud">
+        <div class="stat time-stat" id="timeStat">
+          <span>残り時間</span>
+          <strong><span id="timeLeft">60</span>秒</strong>
+        </div>
+        <div class="stat">
+          <span>目標利益</span>
+          <strong>10,000円</strong>
+        </div>
+        <div class="stat">
+          <span>カゴの冊数</span>
+          <strong><span id="cartCount">0</span>冊</strong>
+        </div>
+      </header>
+
+      <div class="shelf-area" id="shelfArea">
+        <div class="shop-sign">駅前古本マーケット</div>
+        <div class="bookshelf" id="bookshelf"></div>
+      </div>
+
+      <aside class="ad-banner" id="adBanner">
+        <div>
+          <strong id="adCatchSmall">リアルでも本せどりゲーム楽しんじゃう？</strong>
+          <p>初心者向け <b id="adTitleSmall">0からはじめる本せどり基礎マニュアル</b></p>
+        </div>
+        <button id="adBannerButton">詳しく見る</button>
+      </aside>
+    </section>
+
+    <section id="messageScreen" class="screen message-screen">
+      <div class="big-message" id="bigMessage">MISSION COMPLETE！</div>
+    </section>
+
+    <section id="resultScreen" class="screen result-screen">
+      <div class="paper-panel result-board">
+        <p class="eyebrow">結果発表</p>
+        <h2 id="resultTitle">結果発表</h2>
+        <div class="result-grid">
+          <div><span>見込み利益</span><strong id="resultProfit">0円</strong></div>
+          <div><span>仕入れ冊数</span><strong id="resultCount">0冊</strong></div>
+          <div><span>目標利益</span><strong id="resultTarget">10,000円</strong></div>
+          <div><span>達成率</span><strong id="resultPercent">0%</strong></div>
+        </div>
+
+        <section class="brain-affiliate-card" aria-label="本せどり教材紹介">
+          <a class="brain-thumb-link" href="https://brmk.io/20lHrQ" target="_blank" rel="noopener noreferrer">
+            <img src="assets/brain-natto-thumbnail.png" alt="0からはじめる本せどり基礎マニュアル">
+          </a>
+          <div class="brain-affiliate-body">
+            <p class="brain-affiliate-label">リアルでも利益本を探してみる？</p>
+            <h3 id="brainAffiliateHeadline">センスあり！次はリアル店舗でも挑戦</h3>
+            <p id="brainAffiliateMessage">ゲームで利益を出せたなら、本せどりの考え方と相性がいいかもしれません。</p>
+            <p class="brain-affiliate-note">ゲームでは60秒だったけど、現実の本せどりも「見るポイント」を知ると、宝探しみたいに楽しくなります。</p>
+            <a class="brain-title-link" href="https://brmk.io/20lHrQ" target="_blank" rel="noopener noreferrer">0からはじめる本せどり基礎マニュアル</a>
+            <a class="brain-affiliate-button" href="https://brmk.io/20lHrQ" target="_blank" rel="noopener noreferrer">初心者向け教材を見てみる</a>
+          </div>
+        </section>
+
+        <div class="button-row result-buttons">
+          <button class="primary-button" id="retryButton">もう一度</button>
+          <button class="share-button" id="shareButton">Xでシェア</button>
+        </div>
+
+        <div class="picked-list-panel">
+          <h3>仕入れた本の利益一覧</h3>
+          <div class="picked-list" id="pickedList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="adScreen" class="screen ad-screen">
+      <div class="exit-scene">
+        <div class="register-pop">
+          <p class="eyebrow">スタッフおすすめPOP</p>
+          <h2 id="adCatch">リアルでも本せどりゲーム楽しんじゃう？</h2>
+          <p>実際の本せどりでは、利益本をもっと早く見つけるコツがあります。</p>
+          <p class="ad-label">初心者向け教材</p>
+          <h3 id="adTitle">0からはじめる本せどり基礎マニュアル</h3>
+          <p id="adDescription">利益本の探し方や、初心者でも迷わない判断基準を基礎から学べます。</p>
+          <div class="button-row">
+            <button class="primary-button" id="adDetailButton">詳しく見る</button>
+            <button class="secondary-button" id="backToResultButton">ゲームに戻る</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="modalLayer" class="modal-layer" aria-hidden="true">
+    <div class="book-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-cover" id="modalCover"></div>
+      <div class="modal-info">
+        <p class="genre-pill" id="modalGenre">ビジネス</p>
+        <h2 id="modalTitle">本のタイトル</h2>
+        <dl>
+          <div><dt>仕入れ価格</dt><dd id="modalCost">0円</dd></div>
+          <div><dt>販売価格</dt><dd id="modalPrice">0円</dd></div>
+          <div><dt>手数料</dt><dd id="modalFee">0円</dd></div>
+        </dl>
+        <div class="button-row">
+          <button class="primary-button" id="buyButton">🛒仕入れる</button>
+          <button class="secondary-button" id="skipButton">📚スルー</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
