@@ -5,6 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FBA納品パズル</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .result-screen { padding: 10px; }
+    .result-panel { max-height: calc(100svh - 20px); overflow: auto; padding: clamp(14px, 3.6vw, 28px); }
+    .result-panel .eyebrow { margin-bottom: 4px; }
+    .result-panel h2 { font-size: clamp(1.55rem, 6vw, 2.45rem); }
+    .result-panel > p { margin: 8px 0 0; }
+    .result-grid { grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 12px 0; }
+    .result-grid div { border-width: 2px; padding: 8px 5px; }
+    .result-grid strong { font-size: clamp(0.88rem, 3.4vw, 1.18rem); line-height: 1.15; }
+    .result-promos { display: grid; gap: 8px; margin: 0 0 12px; }
+    .promo-card { border: 2px solid rgba(143, 90, 40, 0.28); border-radius: 8px; background: #fffdf7; padding: 10px; text-align: left; }
+    .promo-card h3 { margin: 0 0 5px; color: var(--blue); font-size: 1rem; line-height: 1.2; }
+    .promo-card p { margin: 4px 0; color: var(--ink); font-size: 0.84rem; font-weight: 800; line-height: 1.38; }
+    .promo-card .promo-lead { color: var(--red); font-size: 0.92rem; }
+    .promo-link { display: block; margin-top: 7px; border-radius: 8px; padding: 9px 10px; color: #2a1800; background: var(--yellow); box-shadow: 0 4px 0 #bd8600; font-weight: 1000; text-align: center; text-decoration: none; }
+    .brain-promo { display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; align-items: center; }
+    .brain-promo h3, .brain-promo p { grid-column: 1; }
+    .brain-promo .promo-link { grid-column: 2; grid-row: 1 / 3; min-width: 132px; margin-top: 0; }
+    @media (max-width: 390px) {
+      .result-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .result-actions button { padding-inline: 8px; font-size: 0.94rem; }
+      .brain-promo { grid-template-columns: 1fr; }
+      .brain-promo .promo-link { grid-column: 1; grid-row: auto; }
+    }
+  </style>
 </head>
 <body>
   <main class="app">
@@ -126,6 +151,19 @@
           <div><span>節約</span><strong id="resultSaved">700円</strong></div>
           <div><span>残り時間</span><strong id="resultTime">0秒</strong></div>
           <div><span>スコア</span><strong id="resultScore">0</strong></div>
+        </div>
+        <div class="result-promos" aria-label="おすすめ情報">
+          <section class="promo-card mail-promo">
+            <p class="promo-lead">🎮 遊んでくれてありがとう！♥️</p>
+            <p>「本せどりって楽しそう」と、感じてくれたあなたへ！✨</p>
+            <p>本せどりのある暮らし研究室では、忙しい毎日でも楽しく続けるコツや、便利ツールをお届けしています🌱</p>
+            <a class="promo-link" href="https://my177p.com/p/r/4Q1fvkjf" target="_blank" rel="noopener noreferrer">無料メルマガ研究室に参加する</a>
+          </section>
+          <section class="promo-card brain-promo">
+            <h3>もっと本格的に学びたい方へ📚</h3>
+            <p>おすすめはこちら！</p>
+            <a class="promo-link" href="https://brmk.io/20lHrQ" target="_blank" rel="noopener noreferrer">Brainで詳しく見る</a>
+          </section>
         </div>
         <div class="result-actions">
           <button id="retryButton" class="primary-button" type="button">もう一度遊ぶ</button>
