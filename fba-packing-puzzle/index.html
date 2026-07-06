@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FBA納品パズル</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <section id="titleScreen" class="screen screen-active title-screen">
+      <div class="hero-box" aria-hidden="true">
+        <img src="assets/images/top_packing_box.png" alt="">
+      </div>
+      <div class="title-panel">
+        <img class="title-logo-image" src="assets/images/title_logo_fba_transparent.png" alt="FBA納品パズル 集荷が来るまでに納品準備を完了させよ！">
+        <div class="title-actions">
+          <button id="startButton" class="primary-button" type="button">はじめる</button>
+          <button id="tutorialButton" class="secondary-button" type="button">チュートリアル</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="tutorialScreen" class="screen tutorial-screen">
+      <div class="tutorial-panel">
+        <p class="eyebrow">あそびかた</p>
+        <h2>本をぴったり詰めよう</h2>
+        <div class="tutorial-steps">
+          <div><span>1</span><strong>箱を選ぶ</strong><p>100サイズほど高得点。</p></div>
+          <div><span>2</span><strong>本を動かす</strong><p>ダンボールのマスに吸着。</p></div>
+          <div><span>3</span><strong>回転する</strong><p>置き場でも箱の中でも回せる。</p></div>
+          <div><span>4</span><strong>全部入れる</strong><p>最後の一冊で「入った〜！！」</p></div>
+        </div>
+        <div class="title-actions">
+          <button id="tutorialStartButton" class="primary-button" type="button">やってみる</button>
+          <button id="tutorialBackButton" class="secondary-button" type="button">戻る</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="introScreen" class="screen intro-screen">
+      <div class="intro-scene" aria-hidden="true">
+        <div class="desk-stack stack-a"></div>
+        <div class="desk-stack stack-b"></div>
+        <div class="mini-truck">🚚</div>
+      </div>
+      <div class="intro-dialog">
+        <p id="introLine" class="intro-line">今日はFBA納品をするぞ！</p>
+        <div id="introCountdown" class="intro-countdown" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="goodsScreen" class="screen goods-screen">
+      <header>
+        <p class="eyebrow">今日の納品商品</p>
+        <h2>よーし、納品準備頑張るぞ〜</h2>
+      </header>
+      <button id="toBoxButton" class="primary-button" type="button">ダンボールを選ぶ</button>
+      <div id="goodsPreview" class="goods-preview"></div>
+    </section>
+
+    <section id="boxScreen" class="screen box-screen">
+      <header>
+        <p class="eyebrow">ダンボールサイズ選択</p>
+        <h2>どの箱で送る？</h2>
+      </header>
+      <div id="boxOptions" class="box-options"></div>
+    </section>
+
+    <section id="countdownScreen" class="screen countdown-screen">
+      <div id="countdownNumber" class="countdown-number">3</div>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen">
+      <header class="game-hud">
+        <div class="pickup-meter" id="timeCard">
+          <div class="pickup-speech" id="pickupSpeech" aria-live="polite"></div>
+          <div class="pickup-road" id="pickupRoad" aria-label="集荷までの時間">
+            <div class="pickup-home" aria-hidden="true">🏠</div>
+            <div class="road-line" aria-hidden="true"></div>
+            <div class="pickup-truck" id="pickupTruck" aria-hidden="true">🚚</div>
+          </div>
+          <div class="pickup-info">
+            <span>集荷まで <strong><span id="timeLeft">60</span>秒</strong></span>
+            <span>箱 <strong id="currentBoxLabel">100</strong></span>
+            <span>残り <strong><span id="remainingCount">0</span>冊</strong></span>
+          </div>
+        </div>
+      </header>
+      <div id="stageMessage" class="stage-message"></div>
+      <div id="lastBookBanner" class="last-book-banner">LAST BOOK</div>
+      <div class="play-layout">
+        <section class="packing-zone">
+          <div class="box-toolbar">
+            <div><span>ダンボール</span><strong id="boxName">100サイズ</strong></div>
+            <div id="exchangeButtons" class="exchange-buttons"></div>
+          </div>
+          <div id="boxBoard" class="box-board" aria-label="ダンボール"></div>
+        </section>
+        <section class="desk-zone">
+          <div class="desk-title">
+            <span>机の上</span>
+            <button id="rotateButton" class="rotate-button" type="button">↻ 回転</button>
+          </div>
+          <div id="pieceTray" class="piece-tray"></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="messageScreen" class="screen message-screen">
+      <div id="bigMessage" class="big-message">入った〜！！</div>
+    </section>
+
+    <section id="deliveryScreen" class="screen delivery-screen">
+      <div id="deliveryScene" class="delivery-scene" aria-live="polite"></div>
+    </section>
+
+    <section id="resultScreen" class="screen result-screen">
+      <div class="result-panel">
+        <p class="eyebrow">納品結果</p>
+        <h2 id="resultTitle">発送完了！</h2>
+        <p id="resultStory">ヤマトさん「ありがとうございます！」</p>
+        <div class="result-grid">
+          <div><span>箱サイズ</span><strong id="resultBox">100</strong></div>
+          <div><span>送料</span><strong id="resultCost">1,000円</strong></div>
+          <div><span>節約</span><strong id="resultSaved">700円</strong></div>
+          <div><span>残り時間</span><strong id="resultTime">0秒</strong></div>
+          <div><span>スコア</span><strong id="resultScore">0</strong></div>
+        </div>
+        <div class="result-actions">
+          <button id="retryButton" class="primary-button" type="button">もう一度遊ぶ</button>
+          <button id="shareXButton" class="share-x-button" type="button">Xでシェア</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
+  <div id="dragGhost" class="drag-ghost" aria-hidden="true"></div>
+  <div id="rotationControls" class="rotation-controls" aria-hidden="true">
+    <button class="rotate-float rotate-left" type="button" data-rotate-dir="-1" aria-label="左回転">↺</button>
+    <button class="rotate-float rotate-right" type="button" data-rotate-dir="1" aria-label="右回転">↻</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
